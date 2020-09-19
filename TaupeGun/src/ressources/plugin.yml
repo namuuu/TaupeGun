@@ -1,0 +1,18 @@
+name: TaupeGun
+version: 0.8
+main: fr.namu.tg.MainTG
+commands:
+  host:
+    aliases: h
+    description: Commande pour Host
+  reveal:
+    description: Commande pour se reveal étant taupe
+  scenario:
+    aliases: sc
+    description: Avoir des informations sur les Scénarios actifs.
+  taupe:
+    aliases: t
+    description: Commandes spécifiques aux taupes.
+depend:
+  - Multiverse-Core
+load: POSTWORLD
