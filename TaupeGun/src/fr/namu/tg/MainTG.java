@@ -74,6 +74,7 @@ public class MainTG extends JavaPlugin {
         pm.registerEvents(new ItemSpawnEvent(this), this);
         pm.registerEvents(new PrepareItemEvent(this), this);
         pm.registerEvents(new BreakEvent(this), this);
+        pm.registerEvents(new ChatEvent(this), this));
     }
 
     private void enableCommands() {
