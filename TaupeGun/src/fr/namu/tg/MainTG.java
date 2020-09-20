@@ -12,10 +12,7 @@ import fr.namu.tg.listener.*;
 import fr.namu.tg.menu.MenuTG;
 import fr.namu.tg.scoreboard.FastBoard;
 import fr.namu.tg.scoreboard.ScoreBoard;
-import fr.namu.tg.util.SetupUtil;
-import fr.namu.tg.util.StartUtil;
-import fr.namu.tg.util.TimerUtil;
-import fr.namu.tg.util.WinUtil;
+import fr.namu.tg.util.*;
 import fr.namu.tg.util.stuff.GameStuff;
 import fr.namu.tg.util.stuff.KitStuff;
 import fr.namu.tg.util.stuff.LobbyStuff;
@@ -39,6 +36,7 @@ public class MainTG extends JavaPlugin {
     public final ScoreBoard score = new ScoreBoard(this);
 
     public final SetupUtil setup = new SetupUtil(this);
+    public final ConfigUtil config = new ConfigUtil(this);
     public final TeamUtil team = new TeamUtil(this);
     public final StartUtil start = new StartUtil(this);
     public final TeamFill teamfill = new TeamFill(this);

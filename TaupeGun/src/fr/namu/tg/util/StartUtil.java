@@ -2,10 +2,7 @@ package fr.namu.tg.util;
 
 import fr.namu.tg.InfoTG;
 import fr.namu.tg.MainTG;
-import fr.namu.tg.enums.BorderTG;
-import fr.namu.tg.enums.StateTG;
-import fr.namu.tg.enums.TeamTG;
-import fr.namu.tg.enums.TimerTG;
+import fr.namu.tg.enums.*;
 import fr.namu.tg.runnable.GameRun;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
@@ -61,7 +58,9 @@ public class StartUtil {
         System.out.println("Vérification de la Configuration...");
 
         // VERIFIER QU'IL N'Y A PAS PLUS DE TAUPES QUE DE JOUEURS !
+        this.main.team.editMoleTeamSize(MoleConfigTG.MOLE_PER_TEAM.getValue());
         this.main.team.editMoleTeamNumber(0);
+
         int molenb = 0;
         for(TeamTG team : TeamTG.values()) {
             if(team.getTaupe() != null && team.getTaupe()) {

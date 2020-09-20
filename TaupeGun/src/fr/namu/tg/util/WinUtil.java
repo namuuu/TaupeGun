@@ -61,6 +61,15 @@ public class WinUtil {
     }
 
     private void displayKills() {
+        List<UUID> uuids = new ArrayList<>();
+        for(Player player : Bukkit.getOnlinePlayers()) {
+            uuids.add(player.getUniqueId());
+        }
+        for(UUID uuid : this.main.playertg.keySet()) {
+            if(!uuids.contains(uuid))
+                this.main.playertg.remove(uuid);
+        }
+
         Bukkit.broadcastMessage(" ");
         for (Map.Entry<String, Integer> entry : getTop().entrySet()) {
             Player player = Bukkit.getPlayer(entry.getKey());

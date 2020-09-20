@@ -42,7 +42,8 @@ public class TeamUtil {
         player.setPlayerListName("§7[" + team.getName() + "§7] " + player.getName());
         Bukkit.getScoreboardManager().getMainScoreboard().getTeam(team.getName()).addEntry(player.getName());
 
-        player.getInventory().setItem(4, ItemBuilder.teamBannerHotbar(team));
+        if(this.main.info.getState().equals(StateTG.LOBBY))
+            player.getInventory().setItem(4, ItemBuilder.teamBannerHotbar(team));
 
         if(!main.info.getState().equals(StateTG.LOBBY))
             return;

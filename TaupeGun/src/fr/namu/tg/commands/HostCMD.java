@@ -2,12 +2,14 @@ package fr.namu.tg.commands;
 
 import fr.namu.tg.InfoTG;
 import fr.namu.tg.MainTG;
+import fr.namu.tg.enums.StateTG;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -68,6 +70,49 @@ public class HostCMD implements TabExecutor {
                     players.setFoodLevel(20);
                     players.setSaturation(20);
                 }
+            case "saveconfig":
+                if(args.length != 2) {
+                    player.sendMessage(InfoTG.prefix + "§eVeuillez préciser le nom du fichier !");
+                    return true;
+                }
+                this.main.config.saveConfig(args[1]);
+                player.sendMessage(InfoTG.prefix + "§aLa configuration §e" + args[1] + " §aa été enregistrée avec succès !");
+                return true;
+            case "loadconfig":
+                if(args.length != 2) {
+                    player.sendMessage(InfoTG.prefix + "§eVeuillez préciser le nom du fichier !");
+                    return true;
+                }
+                if(!this.main.info.getState().equals(StateTG.LOBBY)) {
+                    player.sendMessage(InfoTG.prefix + "§eLa partie a déjà commencé, vous ne pouvez plus réaliser cette action !");
+                }
+                this.main.config.loadConfig(args[1]);
+                player.sendMessage(InfoTG.prefix + "§aLa configuration §e" + args[1] + " §aa été modifiée avec succès !");
+                return true;
+            case "removeconfig":
+                if(args.length != 2) {
+                    player.sendMessage(InfoTG.prefix + "§eVeuillez préciser le nom du fichier !");
+                    return true;
+                }
+                File filetodelete = new File(this.main.getDataFolder() + "/config/" + args[1] + ".yml");
+                if(!filetodelete.exists()) {
+                    player.sendMessage(InfoTG.prefix + "§eCette configuration n'existe pas !");
+                    return true;
+                }
+                filetodelete.delete();
+                player.sendMessage(InfoTG.prefix + "§aLa configuration §e" + args[1] + " §aa été supprimée avec succès !");
+                return true;
+            case "listconfigs":
+                File configfolder = new File (this.main.getDataFolder() + "/config");
+                if(configfolder.exists()) {
+                    player.sendMessage("§cListe des configurations disponibles:");
+                    String filelist = "§e";
+                    for(String filename : configfolder.list()) {
+                        filelist += filename + "§7, §e";
+                    }
+                    player.sendMessage(filelist);
+                }
+                return true;
         }
         return true;
     }
@@ -77,7 +122,7 @@ public class HostCMD implements TabExecutor {
 
     @Override
     public List<String> onTabComplete(CommandSender commandSender, Command command, String s, String[] args) {
-        String[] tabe = {"takehost", "leavehost", "heal"};
+        String[] tabe = {"takehost", "leavehost", "heal", "saveconfig", "loadconfig"};
         List<String> tab = new ArrayList<>(Arrays.asList(tabe));
         if (args.length == 0)
             return tab;

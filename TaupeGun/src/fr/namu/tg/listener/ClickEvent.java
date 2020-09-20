@@ -48,8 +48,6 @@ public class ClickEvent implements Listener {
         String currentName = current.getItemMeta().getDisplayName();
         ClickType click = event.getClick();
 
-        System.out.println(currentName);
-
         switch (invname) {
             case "§7Choisis ton Équipe !":
                 event.setCancelled(true);

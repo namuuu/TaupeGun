@@ -2,6 +2,7 @@ package fr.namu.tg.runnable;
 
 import fr.namu.tg.InfoTG;
 import fr.namu.tg.MainTG;
+import fr.namu.tg.PlayerTG;
 import fr.namu.tg.enums.BorderTG;
 import fr.namu.tg.enums.StateTG;
 import fr.namu.tg.enums.TeamTG;
@@ -28,6 +29,7 @@ public class GameRun extends BukkitRunnable {
             for(TeamTG team : TeamTG.values()) {
                 if(team.getTaupe() != null && team.getTaupe()) {
                     for(Player player : team.getPlayers()) {
+                        PlayerTG ptg = this.main.playertg.get(player.getUniqueId());
                         player.sendMessage("§7§m---------------------");
                         player.sendMessage("§fVous êtes une §cTAUPE§f.");
                         player.sendMessage(" ");
@@ -35,6 +37,7 @@ public class GameRun extends BukkitRunnable {
                                 " de taupes. Pour voir toutes les commandes qui vous sont disponibles, il faut faire §7/t help§f, afin d'à la fois savoir comment communiquer " +
                                 "avec vos coéquipiers, savoir qui ils sont, et recevoir votre équipement de taupe. Bonne chance !");
                         player.sendMessage("§7§m---------------------");
+                        ptg.setRevealed(false);
                     }
                 }
             }

@@ -9,20 +9,21 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.Arrays;
 
 public enum ScenarioTG {
-    APOCALYPSE("TG Apocalypse", Material.BOOK_AND_QUILL, Boolean.valueOf(false), 0, new String[] {}),
-    CAT_EYES("§eCat Eyes", Material.EYE_OF_ENDER, Boolean.valueOf(true), 0, new String[] {}),
-    CUT_CLEAN("§eCut Clean", Material.GOLD_PICKAXE, Boolean.valueOf(true), 0, new String[] {}),
-    HASTEY_BOYS("§eHastey Boys", Material.DIAMOND_PICKAXE, Boolean.valueOf(true), 0, new String[] {}),
-    DIAMONDLIMIT("§eDiamondLimit", Material.DIAMOND, null, 0, new String[] {}),
-    MASTERLEVEL("§eMaster Level", Material.EXP_BOTTLE, null, 1, new String[] {}),
-    FASTSMELTING("§eFast Smelting", Material.FURNACE, Boolean.valueOf(false), 0, new String[] {}),
-    RODLESS("§eRodLess", Material.FISHING_ROD, Boolean.valueOf(true), 0, new String[] {}),
-    FIRELESS("§eFireLess", Material.BLAZE_POWDER, Boolean.valueOf(false), 0, new String[] {}),
+    APOCALYPSE("TG Apocalypse", "apo", Material.BOOK_AND_QUILL, Boolean.valueOf(false), 0, new String[] {}),
+    CAT_EYES("§eCat Eyes", "cateyes", Material.EYE_OF_ENDER, Boolean.valueOf(true), 0, new String[] {}),
+    CUT_CLEAN("§eCut Clean", "cutclean", Material.GOLD_PICKAXE, Boolean.valueOf(true), 0, new String[] {}),
+    HASTEY_BOYS("§eHastey Boys", "hasteyboys", Material.DIAMOND_PICKAXE, Boolean.valueOf(true), 0, new String[] {}),
+    DIAMONDLIMIT("§eDiamondLimit", "diamondlimit", Material.DIAMOND, null, 0, new String[] {}),
+    MASTERLEVEL("§eMaster Level", "masterlevel", Material.EXP_BOTTLE, null, 1, new String[] {}),
+    FASTSMELTING("§eFast Smelting", "fastsmelting", Material.FURNACE, Boolean.valueOf(false), 0, new String[] {}),
+    RODLESS("§eRodLess", "rodless", Material.FISHING_ROD, Boolean.valueOf(true), 0, new String[] {}),
+    FIRELESS("§eFireLess", "fireless", Material.BLAZE_POWDER, Boolean.valueOf(false), 0, new String[] {}),
 
 
     ;
 
     private String name;
+    private final String shortname;
 
     private Boolean value;
 
@@ -32,8 +33,9 @@ public enum ScenarioTG {
 
     private String[] lore;
 
-    ScenarioTG(String name, Material mat, Boolean value, int nb, String[] lore) {
+    ScenarioTG(String name, String shortname, Material mat, Boolean value, int nb, String[] lore) {
         this.name = name;
+        this.shortname = shortname;
         this.value = value;
         this.nb = nb;
         this.mat = mat;
@@ -51,6 +53,7 @@ public enum ScenarioTG {
     }
 
     public int getNumber() {return this.nb;}
+    public void setNumber(int nb) {this.nb = nb;}
 
     public void switchValue(ClickType click) {
         if(value == null) {
@@ -94,5 +97,9 @@ public enum ScenarioTG {
 
     public String[] getLore() {
         return lore;
+    }
+
+    public String getSN() {
+        return shortname;
     }
 }

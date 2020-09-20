@@ -21,7 +21,6 @@ public class GameStuff {
     private MainTG main;
 
     public HashMap<Integer, ItemStack> itemStarts = new HashMap<>();
-    public List<ItemStack> itemStart = new ArrayList<>();
     public ItemStack[] armorStart;
 
     public GameStuff(MainTG main) {

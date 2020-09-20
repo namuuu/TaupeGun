@@ -88,7 +88,6 @@ public class TeamFill {
                     PlayerTG ptg = this.main.playertg.get(player.getUniqueId());
                     this.main.team.addPlayerToMoleTeam(player, team);
                     players.remove(0);
-                    ptg.setRevealed(false);
                     this.main.kitStuff.setKit(player);
                     System.out.println(player.getName() + " a été attribué à l'" + team.getName());
 
